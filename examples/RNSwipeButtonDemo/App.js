@@ -13,7 +13,7 @@ import thumbIcon from './assets/thumbIcon.png';
 import arrowRight from './assets/arrow-right.png';
 import styles from './styles';
 
-import SwipeButton from 'rn-swipe-button';
+// import SwipeButton from 'rn-swipe-button';
 /**
  * Follow below steps to test live changes of rn-swipe-button.
  * 1. Copy 'src' folder from RNSwipeButton to 'RNSwipeButton/examples/RNSwipeButtonDemo' folder
@@ -21,10 +21,10 @@ import SwipeButton from 'rn-swipe-button';
  *
  * Note: NPM linking has some issue react-native/HAUL build tools.
  */
-// import SwipeButton from './src/components/SwipeButton';
+import SwipeButton from './src/components/SwipeButton';
 
 
-const App: () => React$Node = () => {
+const App = () => {
   const [disableCBButton, setDisableCBButton] = useState(false)
   const defaultStatusMessage = 'swipe status appears here';
   const [swipeStatusMessage, setSwipeStatusMessage] = useState(
