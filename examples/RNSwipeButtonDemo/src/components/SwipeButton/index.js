@@ -81,8 +81,10 @@ const SwipeButton = props => {
     onSwipeSuccess,
     railBackgroundColor,
     railBorderColor,
+    railBorderWidth,
     railFillBackgroundColor,
     railFillBorderColor,
+    railFillBorderWidth,
     railStyles,
     resetAfterSuccessAnimDelay,
     resetAfterSuccessAnimDuration,
@@ -90,6 +92,7 @@ const SwipeButton = props => {
     swipeSuccessThreshold,
     thumbIconBackgroundColor,
     thumbIconBorderColor,
+    thumbIconBorderWidth,
     thumbIconComponent,
     thumbIconImageSource,
     thumbIconStyles,
@@ -103,17 +106,16 @@ const SwipeButton = props => {
   } = props;
   return (
     <View
-      style={[
-        styles.container,
-        {
-          ...containerStyles,
-          backgroundColor: disabled
-            ? disabledRailBackgroundColor
-            : railBackgroundColor,
-          borderColor: railBorderColor,
-          ...(width ? {width} : {}),
-        },
-      ]}
+      style={{
+        ...styles.container,
+        ...containerStyles,
+        backgroundColor: disabled
+          ? disabledRailBackgroundColor
+          : railBackgroundColor,
+        borderColor: railBorderColor,
+        borderWidth: railBorderWidth,
+        ...(width ? {width} : {}),
+      }}
       onLayout={onLayoutContainer}>
       <Text
         maxFontSizeMultiplier={titleMaxFontScale}
@@ -146,6 +148,7 @@ const SwipeButton = props => {
           onSwipeSuccess={onSwipeSuccess}
           railFillBackgroundColor={railFillBackgroundColor}
           railFillBorderColor={railFillBorderColor}
+          railFillBorderWidth={railFillBorderWidth}
           railStyles={railStyles}
           resetAfterSuccessAnimDelay={resetAfterSuccessAnimDelay}
           resetAfterSuccessAnimDuration={resetAfterSuccessAnimDuration}
@@ -154,6 +157,7 @@ const SwipeButton = props => {
           swipeSuccessThreshold={swipeSuccessThreshold}
           thumbIconBackgroundColor={thumbIconBackgroundColor}
           thumbIconBorderColor={thumbIconBorderColor}
+          thumbIconBorderWidth={thumbIconBorderWidth}
           thumbIconComponent={thumbIconComponent}
           thumbIconHeight={height}
           thumbIconImageSource={thumbIconImageSource}
@@ -176,11 +180,14 @@ SwipeButton.defaultProps = {
   height: 50,
   railBackgroundColor: RAIL_BACKGROUND_COLOR,
   railBorderColor: RAIL_BORDER_COLOR,
+  railBorderWidth: 1,
   railFillBackgroundColor: RAIL_FILL_BACKGROUND_COLOR,
   railFillBorderColor: RAIL_FILL_BORDER_COLOR,
+  railFillBorderWidth: 1,
   swipeSuccessThreshold: SWIPE_SUCCESS_THRESHOLD,
   thumbIconBackgroundColor: THUMB_ICON_BACKGROUND_COLOR,
   thumbIconBorderColor: THUMB_ICON_BORDER_COLOR,
+  thumbIconBorderWidth: 1,
   thumbIconStyles: {},
   title: 'Swipe to submit',
   titleColor: TITLE_COLOR,
@@ -203,8 +210,10 @@ SwipeButton.propTypes = {
   onSwipeSuccess: PropTypes.func,
   railBackgroundColor: PropTypes.string,
   railBorderColor: PropTypes.string,
+  railBorderWidth: PropTypes.number,
   railFillBackgroundColor: PropTypes.string,
   railFillBorderColor: PropTypes.string,
+  railFillBorderWidth: PropTypes.number,
   railStyles: PropTypes.object,
   resetAfterSuccessAnimDelay: PropTypes.number,
   resetAfterSuccessAnimDuration: PropTypes.number,
@@ -212,6 +221,7 @@ SwipeButton.propTypes = {
   swipeSuccessThreshold: PropTypes.number, // Ex: 70. Swipping 70% will be considered as successful swipe
   thumbIconBackgroundColor: PropTypes.string,
   thumbIconBorderColor: PropTypes.string,
+  thumbIconBorderWidth: PropTypes.number,
   thumbIconComponent: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.node,

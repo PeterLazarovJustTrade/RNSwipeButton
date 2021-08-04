@@ -53,6 +53,12 @@ const App = () => {
         <View style={styles.container}>
           <Text style={styles.title}>React Native Swipe Button</Text>
           <Text style={styles.swipeStatus}>{swipeStatusMessage}</Text>
+          {renderSubHeading('Borderless')}
+          <SwipeButton
+            railBorderWidth={0}
+            railFillBorderWidth={0}
+            thumbIconBorderWidth={0}
+          />
           {renderSubHeading('Disabled')}
           <SwipeButton thumbIconImageSource={arrowRight} disabled />
           {renderSubHeading('Swipe status callbacks')}
