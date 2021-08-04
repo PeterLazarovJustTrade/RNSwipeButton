@@ -55,9 +55,13 @@ const App = () => {
           <Text style={styles.swipeStatus}>{swipeStatusMessage}</Text>
           {renderSubHeading('Borderless')}
           <SwipeButton
+            containerPadding={5}
             railBorderWidth={0}
             railFillBorderWidth={0}
             thumbIconBorderWidth={0}
+            containerStyles={{borderRadius: 12}}
+            railStyles={{borderRadius: 12}}
+            thumbIconStyles={{borderRadius: 12}}
           />
           {renderSubHeading('Disabled')}
           <SwipeButton thumbIconImageSource={arrowRight} disabled />

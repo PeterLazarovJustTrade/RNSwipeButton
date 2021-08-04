@@ -236,8 +236,6 @@ const SwipeThumb = props => {
     borderWidth: railFillBorderWidth,
   };
 
-  if (railFillBorderWidth === 0) console.log(panStyle);
-
   return (
     <>
       {screenReaderEnabled ? (

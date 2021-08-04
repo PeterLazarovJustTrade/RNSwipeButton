@@ -68,6 +68,7 @@ const SwipeButton = props => {
 
   const {
     containerStyles,
+    containerPadding,
     disabled,
     disabledRailBackgroundColor,
     disabledThumbIconBackgroundColor,
@@ -114,6 +115,7 @@ const SwipeButton = props => {
           : railBackgroundColor,
         borderColor: railBorderColor,
         borderWidth: railBorderWidth,
+        padding: containerPadding,
         ...(width ? {width} : {}),
       }}
       onLayout={onLayoutContainer}>
@@ -172,6 +174,7 @@ const SwipeButton = props => {
 
 SwipeButton.defaultProps = {
   containerStyles: {},
+  containerPadding: 0,
   disabled: false,
   disabledRailBackgroundColor: DISABLED_RAIL_BACKGROUND_COLOR,
   disabledThumbIconBackgroundColor: DISABLED_THUMB_ICON_BACKGROUND_COLOR,
@@ -197,6 +200,7 @@ SwipeButton.defaultProps = {
 
 SwipeButton.propTypes = {
   containerStyles: PropTypes.object,
+  containerPadding: PropTypes.number,
   disable: PropTypes.bool,
   disabledRailBackgroundColor: PropTypes.string,
   disabledThumbIconBackgroundColor: PropTypes.string,
