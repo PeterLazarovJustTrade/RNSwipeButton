@@ -1,7 +1,7 @@
 {
-  "name": "rn-swipe-button",
-  "version": "1.3.6",
-  "description": "react native swipe/slide button component",
+  "name": "jt-swipe-button",
+  "version": "0.0.2",
+  "description": "react native swipe/slide button component forked from rn-swipe-button",
   "main": "index.js",
   "scripts": {
     "test": "echo \\\"Error: no test specified\\\" && exit 1",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/UdaySravanK/RNSwipeButton.git"
+    "url": "git+https://github.com/PeterLazarovJustTrade/RNSwipeButton.git"
   },
   "keywords": [
     "react-native-swipe-button",
@@ -31,33 +31,27 @@
     "swipe-left-to-right",
     "slide"
   ],
-  "author": "Uday Sravan Kumar Kamineni",
+  "author": "Peter Lazarov",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/UdaySravanK/RNSwipeButton/issues"
+    "url": "https://github.com/PeterLazarovJustTrade/RNSwipeButton/issues"
   },
-  "homepage": "https://github.com/UdaySravanK/RNSwipeButton#readme",
+  "homepage": "https://github.com/PeterLazarovJustTrade/RNSwipeButton#readme",
   "devDependencies": {
-    "@react-native-community/eslint-config": "^0.0.5",
-    "eslint": "^6.3.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-prettier": "^3.1.3",
-    "husky": "^4.2.5",
-    "metro-react-native-babel-preset": "^0.56.0",
-    "pretty-quick": "^2.0.1",
+    "@react-native-community/eslint-config": "3.0.0",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-prettier": "3.4.0",
+    "metro-react-native-babel-preset": "0.66.2",
+    "pretty-quick": "3.1.1",
     "stylelint-config-prettier": "^8.0.1",
-    "stylelint-prettier": "^1.1.2",
+    "stylelint-prettier": "1.2.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.3.0"
   },
   "peerDependencies": {
-    "react": "16.8.6",
-    "react-native": "0.60.5"
+    "react": "17.0.1",
+    "react-native": "0.64.1"
   },
-  "types": "./types.d.ts",
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn format && git add ."
-    }
-  }
+  "types": "./types.d.ts"
 }

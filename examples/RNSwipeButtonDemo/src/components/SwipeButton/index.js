@@ -237,7 +237,7 @@ SwipeButton.propTypes = {
   ]),
   thumbIconStyles: PropTypes.object,
   thumbIconWidth: PropTypes.number,
-  title: PropTypes.string,
+  title: PropTypes.node,
   titleColor: PropTypes.string,
   titleFontSize: PropTypes.number,
   titleMaxFontScale: PropTypes.number,

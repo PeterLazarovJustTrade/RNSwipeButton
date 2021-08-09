@@ -1,6 +1,6 @@
-import React, { useCallback, useState, useEffect, useRef } from 'react';
+import React, {useCallback, useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
-import { I18nManager } from 'react-native';
+import {I18nManager} from 'react-native';
 import {
   Animated,
   Image,
@@ -10,29 +10,30 @@ import {
 } from 'react-native';
 
 // Styles
-import styles, { borderWidth, margin } from './styles';
+import styles, {borderWidth, margin} from './styles';
 
 // Constants
-import { TRANSPARENT_COLOR } from '../../constants';
+import {TRANSPARENT_COLOR} from '../../constants';
 const DEFAULT_ANIMATION_DURATION = 400;
 const RESET_AFTER_SUCCESS_DEFAULT_DELAY = 1000;
 
 const SwipeThumb = props => {
   const paddingAndMarginsOffset = borderWidth + 2 * margin;
-  var defaultContainerWidth = 0
-  if (props.thumbIconWidth == undefined) { 
-    defaultContainerWidth = props.thumbIconHeight 
-  } else { 
-    defaultContainerWidth = props.thumbIconWidth 
+  var defaultContainerWidth = 0;
+  if (props.thumbIconWidth == undefined) {
+    defaultContainerWidth = props.thumbIconHeight;
+  } else {
+    defaultContainerWidth = props.thumbIconWidth;
   }
   const forceReset = props.forceReset;
   const maxWidth = props.layoutWidth - paddingAndMarginsOffset;
   const isRTL = I18nManager.isRTL;
 
-  const animatedWidth = useRef(new Animated.Value(defaultContainerWidth))
-    .current;
+  const animatedWidth = useRef(
+    new Animated.Value(defaultContainerWidth),
+  ).current;
   const [defaultWidth, setDefaultWidth] = useState(defaultContainerWidth);
-  const [shouldDisableTouch, disableTouch] = useState(false)
+  const [shouldDisableTouch, disableTouch] = useState(false);
 
   const [backgroundColor, setBackgroundColor] = useState(TRANSPARENT_COLOR);
   const [borderColor, setBorderColor] = useState(TRANSPARENT_COLOR);
@@ -74,7 +75,7 @@ const SwipeThumb = props => {
       finishRemainingSwipe();
       return;
     }
-    invokeOnSwipeSuccess()
+    invokeOnSwipeSuccess();
     reset();
   }
 
@@ -129,7 +130,7 @@ const SwipeThumb = props => {
   }
 
   function setBackgroundColors() {
-    const { railFillBackgroundColor, railFillBorderColor } = props;
+    const {railFillBackgroundColor, railFillBorderColor} = props;
     // Set backgroundColor only if not already set
     if (backgroundColor === TRANSPARENT_COLOR) {
       setBackgroundColor(railFillBackgroundColor);
@@ -140,7 +141,7 @@ const SwipeThumb = props => {
   function finishRemainingSwipe() {
     // Animate to final position
     setDefaultWidth(maxWidth);
-    invokeOnSwipeSuccess()
+    invokeOnSwipeSuccess();
 
     //Animate back to initial position after successfully swiped
     const resetDelay =
@@ -154,12 +155,12 @@ const SwipeThumb = props => {
   }
 
   function invokeOnSwipeSuccess() {
-    disableTouch(props.disableResetOnTap)
+    disableTouch(props.disableResetOnTap);
     props.onSwipeSuccess && props.onSwipeSuccess();
   }
 
   function reset() {
-    disableTouch(false)
+    disableTouch(false);
     setDefaultWidth(defaultContainerWidth);
 
     if (backgroundColor !== TRANSPARENT_COLOR) {
@@ -175,17 +176,18 @@ const SwipeThumb = props => {
       disabledThumbIconBorderColor,
       thumbIconBackgroundColor,
       thumbIconBorderColor,
+      thumbIconBorderWidth,
       thumbIconComponent: ThumbIconComponent,
       thumbIconHeight,
       thumbIconImageSource,
       thumbIconStyles,
       thumbIconWidth,
     } = props;
-    var iconWidth = 0
+    var iconWidth = 0;
     if (thumbIconWidth == undefined) {
-      iconWidth = thumbIconHeight
+      iconWidth = thumbIconHeight;
     } else {
-      iconWidth = thumbIconWidth
+      iconWidth = thumbIconWidth;
     }
     const dynamicStyles = {
       ...thumbIconStyles,
@@ -197,11 +199,12 @@ const SwipeThumb = props => {
       borderColor: disabled
         ? disabledThumbIconBorderColor
         : thumbIconBorderColor,
+      borderWidth: thumbIconBorderWidth,
       overflow: 'hidden',
     };
 
     return (
-      <View style={[styles.icon, { ...dynamicStyles }]}>
+      <View style={[styles.icon, {...dynamicStyles}]}>
         {!ThumbIconComponent && thumbIconImageSource && (
           <Image resizeMethod="resize" source={thumbIconImageSource} />
         )}
@@ -219,6 +222,7 @@ const SwipeThumb = props => {
     enableReverseSwipe,
     onSwipeSuccess,
     railStyles,
+    railFillBorderWidth,
     screenReaderEnabled,
     title,
   } = props;
@@ -229,6 +233,7 @@ const SwipeThumb = props => {
     width: animatedWidth,
     ...(enableReverseSwipe ? styles.containerRTL : styles.container),
     ...railStyles,
+    borderWidth: railFillBorderWidth,
   };
 
   return (
@@ -241,15 +246,15 @@ const SwipeThumb = props => {
           disabled={disabled}
           onPress={onSwipeSuccess}
           accessible>
-          <View style={[panStyle, { width: defaultContainerWidth }]}>
+          <View style={{ width: defaultContainerWidth, ...panStyle}}>
             {renderThumbIcon()}
           </View>
         </TouchableNativeFeedback>
       ) : (
-        <Animated.View 
-          style={[panStyle]} {...panResponder.panHandlers}
-          pointerEvents= {shouldDisableTouch ? "none" : "auto"}
-        >
+        <Animated.View
+          style={[panStyle]}
+          {...panResponder.panHandlers}
+          pointerEvents={shouldDisableTouch ? 'none' : 'auto'}>
           {renderThumbIcon()}
         </Animated.View>
       )}
@@ -279,6 +284,7 @@ SwipeThumb.propTypes = {
   onSwipeSuccess: PropTypes.func,
   railFillBackgroundColor: PropTypes.string,
   railFillBorderColor: PropTypes.string,
+  railFillBorderWidth: PropTypes.number,
   railStyles: PropTypes.object,
   resetAfterSuccessAnimDuration: PropTypes.number,
   screenReaderEnabled: PropTypes.bool,
@@ -286,6 +292,7 @@ SwipeThumb.propTypes = {
   swipeSuccessThreshold: PropTypes.number,
   thumbIconBackgroundColor: PropTypes.string,
   thumbIconBorderColor: PropTypes.string,
+  thumbIconBorderWidth: PropTypes.number,
   thumbIconComponent: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.node,
@@ -298,7 +305,7 @@ SwipeThumb.propTypes = {
   ]),
   thumbIconStyles: PropTypes.object,
   thumbIconWidth: PropTypes.number,
-  title: PropTypes.string,
+  title: PropTypes.node,
 };
 
 export default SwipeThumb;

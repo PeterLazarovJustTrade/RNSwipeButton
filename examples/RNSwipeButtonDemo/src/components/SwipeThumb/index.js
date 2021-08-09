@@ -305,7 +305,7 @@ SwipeThumb.propTypes = {
   ]),
   thumbIconStyles: PropTypes.object,
   thumbIconWidth: PropTypes.number,
-  title: PropTypes.string,
+  title: PropTypes.node,
 };
 
 export default SwipeThumb;

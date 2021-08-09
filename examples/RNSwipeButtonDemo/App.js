@@ -44,7 +44,7 @@ const App = () => {
             <Text style={{color: '#ffffff'}}>Checkout</Text>
         </View>
     );
-  } 
+  };
 
   return (
     <>
@@ -62,6 +62,10 @@ const App = () => {
             containerStyles={{borderRadius: 12}}
             railStyles={{borderRadius: 12}}
             thumbIconStyles={{borderRadius: 12}}
+            title={<>
+              titleText
+              <CheckoutButton />
+            </>}
           />
           {renderSubHeading('Disabled')}
           <SwipeButton thumbIconImageSource={arrowRight} disabled />
@@ -79,7 +83,7 @@ const App = () => {
             thumbIconComponent={CheckoutButton}
             thumbIconImageSource={arrowRight}
             thumbIconStyles={{borderRadius: 5}}
-            thumbIconWidth={100} 
+            thumbIconWidth={100}
             title="Submit order"
           />
           {renderSubHeading('Reverse swipe enabled')}
@@ -106,7 +110,7 @@ const App = () => {
           />
           <View style={{ alignItems: 'center', marginBottom: 5 }}>
             <Button onPress={() => forceResetLastButton && forceResetLastButton()} title="Force reset" />
-          </View>  
+          </View>
           {renderSubHeading('Set .png image as thumb icon')}
           <SwipeButton thumbIconImageSource={thumbIcon} railBackgroundColor="#cfb0dd"/>
           {renderSubHeading('Set height & reset after successful swipe')}
@@ -115,7 +119,7 @@ const App = () => {
           <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <SwipeButton height={35} width={200} title="Swipe" disabled={disableCBButton} />
             <View style={{ marginLeft: 15, width: 150, height: 32 }}><Button onPress={() => setDisableCBButton(!disableCBButton)} title="Toggle disable" /></View>
-          </View>  
+          </View>
         </View>
       </SafeAreaView>
     </>
