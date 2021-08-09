@@ -5,11 +5,13 @@ const Styles = StyleSheet.create({
     borderRadius: 100 / 2,
     borderWidth: 1,
     justifyContent: 'center',
-    margin: 5,
   },
-  title: {
+  content: {
     alignSelf: 'center',
     position: 'absolute',
+    alignContent: 'center',
+    justifyContent: 'center',
+    flexDirection: 'row',
   },
 });
 

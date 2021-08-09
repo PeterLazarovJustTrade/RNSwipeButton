@@ -58,14 +58,22 @@ const App = () => {
             containerPadding={5}
             railBorderWidth={0}
             railFillBorderWidth={0}
-            thumbIconBorderWidth={0}
+            thumbIconBorderWidth={1}
             containerStyles={{borderRadius: 12}}
             railStyles={{borderRadius: 12}}
             thumbIconStyles={{borderRadius: 12}}
+          />
+          {renderSubHeading('Complex title - custom component')}
+          <SwipeButton
             title={<>
               titleText
               <CheckoutButton />
             </>}
+          />
+          {renderSubHeading('Complex title - left/right end component')}
+          <SwipeButton
+            title="titleText"
+            RightEndTemplate={() => <CheckoutButton />}
           />
           {renderSubHeading('Disabled')}
           <SwipeButton thumbIconImageSource={arrowRight} disabled />

@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 // Styles
-import styles, {borderWidth, margin} from './styles';
+import styles from './styles';
 
 // Constants
 import {TRANSPARENT_COLOR} from '../../constants';
@@ -18,15 +18,15 @@ const DEFAULT_ANIMATION_DURATION = 400;
 const RESET_AFTER_SUCCESS_DEFAULT_DELAY = 1000;
 
 const SwipeThumb = props => {
-  const paddingAndMarginsOffset = borderWidth + 2 * margin;
   var defaultContainerWidth = 0;
-  if (props.thumbIconWidth == undefined) {
+  if (props.thumbIconWidth === undefined) {
     defaultContainerWidth = props.thumbIconHeight;
   } else {
     defaultContainerWidth = props.thumbIconWidth;
   }
   const forceReset = props.forceReset;
-  const maxWidth = props.layoutWidth - paddingAndMarginsOffset;
+  const railOffset = props.railFillBorderWidth + 2 * props.containerPadding;
+  const maxWidth = props.layoutWidth - railOffset;
   const isRTL = I18nManager.isRTL;
 
   const animatedWidth = useRef(
@@ -184,7 +184,7 @@ const SwipeThumb = props => {
       thumbIconWidth,
     } = props;
     var iconWidth = 0;
-    if (thumbIconWidth == undefined) {
+    if (thumbIconWidth === undefined) {
       iconWidth = thumbIconHeight;
     } else {
       iconWidth = thumbIconWidth;
@@ -200,6 +200,7 @@ const SwipeThumb = props => {
         ? disabledThumbIconBorderColor
         : thumbIconBorderColor,
       borderWidth: thumbIconBorderWidth,
+      marginVertical: -1 * thumbIconBorderWidth,
       overflow: 'hidden',
     };
 
@@ -278,6 +279,7 @@ SwipeThumb.propTypes = {
   disabledThumbIconBorderColor: PropTypes.string,
   enableReverseSwipe: PropTypes.bool,
   forceReset: PropTypes.func,
+  containerPadding: PropTypes.number,
   layoutWidth: PropTypes.number,
   onSwipeFail: PropTypes.func,
   onSwipeStart: PropTypes.func,

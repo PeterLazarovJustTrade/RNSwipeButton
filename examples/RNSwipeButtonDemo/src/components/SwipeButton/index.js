@@ -102,7 +102,10 @@ const SwipeButton = props => {
     titleColor,
     titleFontSize,
     titleMaxFontScale,
+    titleMargin,
     titleStyles,
+    LeftEndTemplate,
+    RightEndTemplate,
     width,
   } = props;
   return (
@@ -119,23 +122,25 @@ const SwipeButton = props => {
         ...(width ? {width} : {}),
       }}
       onLayout={onLayoutContainer}>
-      <Text
-        maxFontSizeMultiplier={titleMaxFontScale}
-        ellipsizeMode={'tail'}
-        numberOfLines={1}
-        importantForAccessibility={
-          screenReaderEnabled ? 'no-hide-descendants' : ''
-        }
-        style={[
-          styles.title,
-          {
+      <View style={styles.content}>
+        {LeftEndTemplate && <LeftEndTemplate />}
+        <Text
+          maxFontSizeMultiplier={titleMaxFontScale}
+          ellipsizeMode={'tail'}
+          numberOfLines={1}
+          importantForAccessibility={
+            screenReaderEnabled ? 'no-hide-descendants' : ''
+          }
+          style={{
             color: titleColor,
             fontSize: titleFontSize,
             ...titleStyles,
-          },
-        ]}>
-        {title}
-      </Text>
+            margin: titleMargin,
+          }}>
+          {title}
+        </Text>
+        {RightEndTemplate && <RightEndTemplate />}
+      </View>
       {layoutWidth > 0 && (
         <SwipeThumb
           disabled={disabled}
@@ -144,6 +149,7 @@ const SwipeButton = props => {
           disableResetOnTap={disableResetOnTap}
           enableReverseSwipe={enableReverseSwipe}
           forceReset={forceReset}
+          containerPadding={containerPadding}
           layoutWidth={layoutWidth}
           onSwipeFail={onSwipeFail}
           onSwipeStart={onSwipeStart}
@@ -174,7 +180,7 @@ const SwipeButton = props => {
 
 SwipeButton.defaultProps = {
   containerStyles: {},
-  containerPadding: 0,
+  containerPadding: 4,
   disabled: false,
   disabledRailBackgroundColor: DISABLED_RAIL_BACKGROUND_COLOR,
   disabledThumbIconBackgroundColor: DISABLED_THUMB_ICON_BACKGROUND_COLOR,
@@ -196,6 +202,7 @@ SwipeButton.defaultProps = {
   titleColor: TITLE_COLOR,
   titleFontSize: 20,
   titleStyles: {},
+  titleMargin: 4,
 };
 
 SwipeButton.propTypes = {
@@ -237,11 +244,17 @@ SwipeButton.propTypes = {
   ]),
   thumbIconStyles: PropTypes.object,
   thumbIconWidth: PropTypes.number,
-  title: PropTypes.node,
+  title: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.string,
+  ]),
   titleColor: PropTypes.string,
   titleFontSize: PropTypes.number,
   titleMaxFontScale: PropTypes.number,
   titleStyles: PropTypes.object,
+  titleMargin: PropTypes.number,
+  RightEndTemplate: PropTypes.node,
+  IconLeftTemplate: PropTypes.node,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
