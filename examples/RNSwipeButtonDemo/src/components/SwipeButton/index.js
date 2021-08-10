@@ -123,7 +123,7 @@ const SwipeButton = props => {
       }}
       onLayout={onLayoutContainer}>
       <View style={styles.content}>
-        {LeftEndTemplate && <LeftEndTemplate />}
+        {LeftEndTemplate}
         <Text
           maxFontSizeMultiplier={titleMaxFontScale}
           ellipsizeMode={'tail'}
@@ -139,7 +139,7 @@ const SwipeButton = props => {
           }}>
           {title}
         </Text>
-        {RightEndTemplate && <RightEndTemplate />}
+        {RightEndTemplate}
       </View>
       {layoutWidth > 0 && (
         <SwipeThumb
@@ -254,7 +254,7 @@ SwipeButton.propTypes = {
   titleStyles: PropTypes.object,
   titleMargin: PropTypes.number,
   RightEndTemplate: PropTypes.node,
-  IconLeftTemplate: PropTypes.node,
+  LeftEndTemplate: PropTypes.node,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 

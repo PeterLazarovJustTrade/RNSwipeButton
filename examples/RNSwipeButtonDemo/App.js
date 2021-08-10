@@ -73,7 +73,7 @@ const App = () => {
           {renderSubHeading('Complex title - left/right end component')}
           <SwipeButton
             title="titleText"
-            RightEndTemplate={() => <CheckoutButton />}
+            RightEndTemplate={<CheckoutButton />}
           />
           {renderSubHeading('Disabled')}
           <SwipeButton thumbIconImageSource={arrowRight} disabled />
