@@ -36,7 +36,8 @@
 <h2 style="color:darkgreen;">Component properties</h2>
 <pre style="font-size: 15px; color: brown;">
     <b>containerStyles</b>: PropTypes.object,
-    <b>disabled</b>: PropTypes.bool,
+    <b>containerPadding</b>: PropTypes.number,
+    <b>disable</b>: PropTypes.bool,
     <b>disableResetOnTap</b>: PropTypes.bool,
     <b>disabledRailBackgroundColor</b>: PropTypes.string,
     <b>disabledThumbIconBackgroundColor</b>: PropTypes.string,
@@ -52,28 +53,40 @@
     <b>onSwipeSuccess</b>: PropTypes.func,
     <b>railBackgroundColor</b>: PropTypes.string,
     <b>railBorderColor</b>: PropTypes.string,
+    <b>railBorderWidth</b>: PropTypes.number,
     <b>railFillBackgroundColor</b>: PropTypes.string,
     <b>railFillBorderColor</b>: PropTypes.string,
+    <b>railFillBorderWidth</b>: PropTypes.number,
     <b>railStyles</b>: PropTypes.object,
     <b>resetAfterSuccessAnimDelay</b>: PropTypes.number, <span style="color: blueviolet">// This is delay before resetting the button after successful swipe When shouldResetAfterSuccess = true </span>
     <b>resetAfterSuccessAnimDuration</b>: PropTypes.number,
-    <b>screenReaderEnabled</b>: PropTypes.bool,
     <b>shouldResetAfterSuccess</b>: PropTypes.bool, <span style="color: blueviolet">// If set to true, buttun resets automatically after swipe success with default delay of 1000ms</span>
     <b>swipeSuccessThreshold</b>: PropTypes.number, <span style="color: blueviolet">// Ex: 70. Swipping 70% will be considered as successful swipe</span>
     <b>thumbIconBackgroundColor</b>: PropTypes.string,
     <b>thumbIconBorderColor</b>: PropTypes.string,
-    <b>thumbIconComponent</b>: PropTypes.node, <span style="color: blueviolet">Pass any react component to replace swipable thumb icon</span>
+    <b>thumbIconBorderWidth</b>: PropTypes.number,
+    <b>thumbIconComponent</b>: PropTypes.oneOfType([
+      PropTypes.element,
+      PropTypes.node,
+      PropTypes.func,
+    ]), <span style="color: blueviolet">Pass any react component to replace swipable thumb icon</span>
     <b>thumbIconImageSource</b>: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
     ]),
     <b>thumbIconStyles</b>: PropTypes.object,
     <b>thumbIconWidth</b>: PropTypes.number,
-    <b>title</b>: PropTypes.string,
+    <b>title</b>: PropTypes.oneOfType([
+      PropTypes.node,
+      PropTypes.string,
+    ]),
     <b>titleColor</b>: PropTypes.string,
     <b>titleFontSize</b>: PropTypes.number,
     <b>titleMaxFontScale</b>: PropTypes.number, <span style="color: blueviolet">// Ex: 2. will limit font size increasing to 200% when user increases font size in device properties</span>
     <b>titleStyles</b>: PropTypes.object,
+    <b>titleMargin</b>: PropTypes.number,
+    <b>RightEndTemplate</b>: PropTypes.node,
+    <b>LeftEndTemplate</b>: PropTypes.node,
     <b>width</b>: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
