@@ -12,7 +12,6 @@ const Styles = StyleSheet.create({
     alignContent: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    backgroundColor: 'red',
   },
   centeredView: {
     alignContent: 'center',

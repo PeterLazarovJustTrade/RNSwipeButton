@@ -13,6 +13,10 @@ const Styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
   },
+  centeredView: {
+    alignContent: 'center',
+    justifyContent: 'center',
+  },
 });
 
 export default Styles;
