@@ -1,6 +1,6 @@
 {
   "name": "jt-swipe-button",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "react native swipe/slide button component forked from rn-swipe-button",
   "main": "index.js",
   "scripts": {

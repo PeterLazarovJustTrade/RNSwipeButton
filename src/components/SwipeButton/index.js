@@ -48,7 +48,10 @@ const SwipeButton = props => {
       setScreenReaderEnabled(isEnabled);
     };
     setIsUnmounting(false);
-    AccessibilityInfo.addEventListener('change', handleScreenReaderToggled);
+    const eventEmitter = AccessibilityInfo.addEventListener(
+      'change',
+      handleScreenReaderToggled,
+    );
 
     AccessibilityInfo.isScreenReaderEnabled().then(isEnabled => {
       if (isUnmounting) {
@@ -59,10 +62,7 @@ const SwipeButton = props => {
 
     return () => {
       setIsUnmounting(true);
-      AccessibilityInfo.removeEventListener(
-        'change',
-        handleScreenReaderToggled,
-      );
+      eventEmitter.remove();
     };
   }, [isUnmounting, screenReaderEnabled]);
 
@@ -248,10 +248,7 @@ SwipeButton.propTypes = {
   ]),
   thumbIconStyles: PropTypes.object,
   thumbIconWidth: PropTypes.number,
-  title: PropTypes.oneOfType([
-    PropTypes.node,
-    PropTypes.string,
-  ]),
+  title: PropTypes.oneOfType([PropTypes.node, PropTypes.string]),
   titleColor: PropTypes.string,
   titleFontSize: PropTypes.number,
   titleMaxFontScale: PropTypes.number,
