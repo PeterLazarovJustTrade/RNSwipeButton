@@ -107,9 +107,12 @@ const SwipeButton = props => {
     LeftEndTemplate,
     RightEndTemplate,
     width,
+    containerTestID,
+    thumbTestID,
   } = props;
   return (
     <View
+      testID={containerTestID || "SwipeButton.Container"}
       style={{
         ...styles.container,
         ...containerStyles,
@@ -147,6 +150,7 @@ const SwipeButton = props => {
       </View>
       {layoutWidth > 0 && (
         <SwipeThumb
+          testID={thumbTestID}
           disabled={disabled}
           disabledThumbIconBackgroundColor={disabledThumbIconBackgroundColor}
           disabledThumbIconBorderColor={disabledThumbIconBorderColor}

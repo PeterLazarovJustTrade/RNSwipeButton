@@ -1,6 +1,6 @@
-import React, {useCallback, useState, useEffect, useRef} from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import {I18nManager} from 'react-native';
+import { I18nManager } from 'react-native';
 import {
   Animated,
   Image,
@@ -13,11 +13,11 @@ import {
 import styles from './styles';
 
 // Constants
-import {TRANSPARENT_COLOR} from '../../constants';
+import { TRANSPARENT_COLOR } from '../../constants';
 const DEFAULT_ANIMATION_DURATION = 400;
 const RESET_AFTER_SUCCESS_DEFAULT_DELAY = 1000;
 
-const SwipeThumb = props => {
+const SwipeThumb = (props) => {
   var defaultContainerWidth = 0;
   if (props.thumbIconWidth === undefined) {
     defaultContainerWidth = props.thumbIconHeight;
@@ -130,7 +130,7 @@ const SwipeThumb = props => {
   }
 
   function setBackgroundColors() {
-    const {railFillBackgroundColor, railFillBorderColor} = props;
+    const { railFillBackgroundColor, railFillBorderColor } = props;
     // Set backgroundColor only if not already set
     if (backgroundColor === TRANSPARENT_COLOR) {
       setBackgroundColor(railFillBackgroundColor);
@@ -205,7 +205,7 @@ const SwipeThumb = props => {
     };
 
     return (
-      <View style={[styles.icon, {...dynamicStyles}]}>
+      <View style={[styles.icon, { ...dynamicStyles }]}>
         {!ThumbIconComponent && thumbIconImageSource && (
           <Image resizeMethod="resize" source={thumbIconImageSource} />
         )}
@@ -241,18 +241,20 @@ const SwipeThumb = props => {
     <>
       {screenReaderEnabled ? (
         <TouchableNativeFeedback
+          testID={props.testID || "SwipeButton.Thumb"}
           accessibilityLabel={`${title}. ${
             disabled ? 'Disabled' : 'Double-tap to activate'
           }`}
           disabled={disabled}
           onPress={onSwipeSuccess}
           accessible>
-          <View style={{ width: defaultContainerWidth, ...panStyle}}>
+          <View style={{ width: defaultContainerWidth, ...panStyle }}>
             {renderThumbIcon()}
           </View>
         </TouchableNativeFeedback>
       ) : (
         <Animated.View
+          testID={props.testID || "SwipeButton.Thumb"}
           style={[panStyle]}
           {...panResponder.panHandlers}
           pointerEvents={shouldDisableTouch ? 'none' : 'auto'}>

@@ -241,18 +241,20 @@ const SwipeThumb = props => {
     <>
       {screenReaderEnabled ? (
         <TouchableNativeFeedback
+          testID={props.testID || 'SwipeButton.Thumb'}
           accessibilityLabel={`${title}. ${
             disabled ? 'Disabled' : 'Double-tap to activate'
           }`}
           disabled={disabled}
           onPress={onSwipeSuccess}
           accessible>
-          <View style={{ width: defaultContainerWidth, ...panStyle}}>
+          <View style={{width: defaultContainerWidth, ...panStyle}}>
             {renderThumbIcon()}
           </View>
         </TouchableNativeFeedback>
       ) : (
         <Animated.View
+          testID={props.testID || 'SwipeButton.Thumb'}
           style={[panStyle]}
           {...panResponder.panHandlers}
           pointerEvents={shouldDisableTouch ? 'none' : 'auto'}>
